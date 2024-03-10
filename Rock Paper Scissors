@@ -1,0 +1,57 @@
+//Choose Rock, Paper or Scissors
+let UserInput = 'rock'
+
+//Making sure the Choice is valid and returning it or an error
+const getUserChoice = () =>{
+  if (UserInput === 'rock' || UserInput === 'paper' || UserInput === 'scissors' || UserInput === 'adam'){
+      UserInput = UserInput.toLowerCase();
+      return UserInput;
+  } else{
+    console.log('Write something real fam');
+  }; 
+};
+
+//Array of the 3 Choices
+const Choices = ['scissors', 'paper', 'rock'];
+
+//Making the Computer choose an Option
+const getComputerChoice = function(){
+let number = Math.floor(Math.random()* 3);
+return Choices[number];
+}
+
+//Determining the Winner
+const determineWinner = function(UserChoice, computerChoice) {
+
+//Tie Condition
+if (UserChoice === computerChoice){
+  return 'The Game is a Tie';
+
+//Win Conditions
+} else if (UserChoice === 'scissors' && computerChoice === 'paper') {
+  return 'WIN.';
+} else if (UserChoice === 'paper' && computerChoice === 'rock') {
+  return 'WIN.';
+} else if (UserChoice === 'rock' && computerChoice === 'scissors') {
+  return 'WIN.';
+} else if (UserChoice === 'adam'){
+  return 'WIN, ADAM NEVER LOSES';
+}
+
+//Lose Condition
+else{
+  return 'LOST, LOSER!';
+}
+}
+
+//The Game
+const playGame = function(){
+  let userChoice = getUserChoice('rock');
+  console.log(userChoice);
+  let computerChoice = getComputerChoice();
+  console.log(computerChoice);
+
+  console.log(determineWinner(userChoice, computerChoice));
+}
+
+playGame();
